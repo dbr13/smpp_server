@@ -1,5 +1,6 @@
 from . import *
 
+
 class PDU(object):
     def __init__(self, command_id, command_status, sequence_number, **kwargs):
         super(PDU, self).__init__()

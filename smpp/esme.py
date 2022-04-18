@@ -43,9 +43,9 @@ class ESME(object):
                 length = int(binascii.b2a_hex(length_bin), 16)
                 rest_bin = self.conn.recv(length-4)
                 pdu = unpack_pdu(length_bin + rest_bin)
-                print '...', pdu['header']['sequence_number'],
-                print '>',   pdu['header']['command_id'],
-                print '...', pdu['header']['command_status']
+                print('...', pdu['header']['sequence_number'])
+                print ('>',   pdu['header']['command_id'])
+                print('...', pdu['header']['command_status'])
             return pdu
 
     def __is_ok(self, pdu, id_check=None):
@@ -79,7 +79,7 @@ class ESME(object):
 
     def submit_sm(self, **kwargs):
         if self.state in ['BOUND_TX', 'BOUND_TRX']:
-            print dict(self.defaults, **kwargs)
+            print(dict(self.defaults, **kwargs))
             pdu = SubmitSM(self.sequence_number, **dict(self.defaults, **kwargs))
             self.conn.send(pdu.get_bin())
             self.sequence_number += 1

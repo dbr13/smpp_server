@@ -12,7 +12,7 @@ class SMSC(ESME):
         self.server.bind(('', port))
         self.server.listen(1)
         self.conn, self.addr = self.server.accept()
-        print 'Connected by', self.addr
+        print('Connected by', self.addr)
         while 1:
             pdu = self._ESME__recv()
             if not pdu:
